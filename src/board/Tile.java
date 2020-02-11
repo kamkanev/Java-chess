@@ -11,14 +11,14 @@ public abstract class Tile {
 
 	protected final int tileCoords;
 	
-	private static final Map<Integer, EmptyTile> EMPTY_TILES = createAllPosibleEmptyTiles();
+	private static final Map<Integer, EmptyTile> EMPTY_TILES_CACHE = createAllPosibleEmptyTiles();
 	
 	private Tile(int tileCoords) {
 		this.tileCoords = tileCoords;
 	}
 	
 	public static Tile createTile(final int tileCoords, final Piece piece) {
-		return piece != null ? new OccupiedTile(tileCoords, piece) : EMPTY_TILES.get(tileCoords);
+		return piece != null ? new OccupiedTile(tileCoords, piece) : EMPTY_TILES_CACHE.get(tileCoords);
 	}
 	
 	private static Map<Integer, EmptyTile> createAllPosibleEmptyTiles() {
@@ -38,7 +38,7 @@ public abstract class Tile {
 	
 	public static final class EmptyTile extends Tile {
 
-		public EmptyTile(final int tileCoords) {
+		private EmptyTile(final int tileCoords) {
 			super(tileCoords);
 		}
 
@@ -58,7 +58,7 @@ public abstract class Tile {
 		
 		private final Piece pieceOnTile;
 
-		public OccupiedTile(int tileCoords, Piece piece) {
+		private OccupiedTile(int tileCoords, Piece piece) {
 			super(tileCoords);
 			this.pieceOnTile = piece;
 		}

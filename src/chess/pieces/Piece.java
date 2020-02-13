@@ -1,10 +1,11 @@
-package pieces;
+package chess.pieces;
 
+import java.util.Collection;
 import java.util.List;
 
-import Alliance;
-import board.Board;
-import board.Move;
+import chess.Alliance;
+import chess.board.Board;
+import chess.board.Move;
 
 public abstract class Piece {
 	
@@ -15,7 +16,13 @@ public abstract class Piece {
 		this.pieceAlliance = pieceAlliance;
 		this.piecePosition = position;
 	}
+	
 
-	public abstract List<Move> calculateLegalMoves (final Board board);
+	public Alliance getPieceAlliance() {
+		return pieceAlliance;
+	}
+
+
+	public abstract Collection<Move> calculateLegalMoves (final Board board);
 	
 }

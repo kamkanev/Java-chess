@@ -1,11 +1,11 @@
-package board;
+package chess.board;
 
 import java.util.HashMap;
 import java.util.Map;
 
 import com.google.common.collect.ImmutableMap;
 
-import pieces.Piece;
+import chess.pieces.Piece;
 
 public abstract class Tile {
 
